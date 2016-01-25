@@ -66,6 +66,7 @@ public class ChooseFragment extends Fragment {
                     case R.id.back :
                         break;
                 }
+
                 Intent intent = new Intent("com.darren.survival.REFRESH_ELEMENTS");
                 localBroadcastManager.sendBroadcast(intent);
             }
