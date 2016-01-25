@@ -17,7 +17,7 @@ public class ChooseAdapter extends BaseAdapter {
     private Context context;
     private List<Good> choices;
 
-    private int selectedPosition = 0;
+    private int selectedPosition = -1;
 
     public ChooseAdapter(Context context, List<Good> choices) {
         this.context = context;
@@ -45,6 +45,7 @@ public class ChooseAdapter extends BaseAdapter {
 
     public void setSelectedPosition(int selectedPosition) {
         this.selectedPosition = selectedPosition;
+        notifyDataSetChanged();
     }
 
     public void setData(List<Good> choices) {

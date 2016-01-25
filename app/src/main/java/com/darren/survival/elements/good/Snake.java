@@ -8,7 +8,7 @@ import com.darren.survival.elements.motion.good.Makable;
  */
 public class Snake extends Good implements Makable {
     public static final double WEIGHT = 0.5;
-    public static int COUNT = 0;
+    private int count = 0;
     public static final String ID = "WK22";
     private static Snake snake = new Snake();
 
@@ -25,13 +25,13 @@ public class Snake extends Good implements Makable {
     }
 
     @Override
-    public int getCOUNT() {
-        return COUNT;
+    public int getCount() {
+        return count;
     }
 
     @Override
-    public void setCOUNT(int COUNT) {
-        Snake.COUNT += COUNT;
+    public void setCount(int count) {
+        this.count = count;
     }
 
     @Override

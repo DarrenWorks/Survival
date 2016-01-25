@@ -8,7 +8,7 @@ import com.darren.survival.elements.motion.good.Huntable;
  */
 public class Bait extends Good implements Huntable {
     public static final double WEIGHT = 0.01;
-    public static int COUNT = 0;
+    private int count = 0;
     public static final String ID = "HT2";
     private static Bait bait = new Bait();
 
@@ -25,13 +25,13 @@ public class Bait extends Good implements Huntable {
     }
 
     @Override
-    public int getCOUNT() {
-        return COUNT;
+    public int getCount() {
+        return count;
     }
 
     @Override
-    public void setCOUNT(int COUNT) {
-        Bait.COUNT += COUNT;
+    public void setCount(int count) {
+        this.count = count;
     }
 
     @Override

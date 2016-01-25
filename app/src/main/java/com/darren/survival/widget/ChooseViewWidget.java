@@ -26,10 +26,11 @@ public class ChooseViewWidget extends LinearLayout {
 
     private TextView choiceType;
     private ListView choiceList;
+    private TextView emptyView;
+
+    private boolean choiceSelected;
 
     private ChooseAdapter chooseAdapter;
-
-    private boolean isListening = false;
 
     public ChooseViewWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -38,7 +39,7 @@ public class ChooseViewWidget extends LinearLayout {
         init();
     }
 
-    public ChooseViewWidget(Context context,Fragment fragment, AttributeSet attrs) {
+    public ChooseViewWidget(Context context, Fragment fragment, AttributeSet attrs) {
         this(context, attrs);
         this.fragment = fragment;
     }
@@ -46,16 +47,19 @@ public class ChooseViewWidget extends LinearLayout {
     private void init() {
         choiceType = (TextView) findViewById(R.id.choiceType);
         choiceList = (ListView) findViewById(R.id.choiceList);
+        emptyView = (TextView) findViewById(R.id.emptyView);
 
         chooseAdapter = new ChooseAdapter(context, new ArrayList<Good>());
         choiceList.setAdapter(chooseAdapter);
 
+        choiceList.setEmptyView(emptyView);
+
         choiceList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (!choiceSelected) choiceSelected = true;
                 chooseAdapter.setSelectedPosition(position);
-                chooseAdapter.notifyDataSetChanged();
-                if (isListening && fragment instanceof ChoiceOnClickListener)
+                if (fragment instanceof ChoiceOnClickListener)
                     ((ChoiceOnClickListener) fragment).onClick(getChoice());
             }
         });
@@ -70,16 +74,16 @@ public class ChooseViewWidget extends LinearLayout {
         chooseAdapter.setData(choices);
     }
 
-    public void setListening() {
-        isListening = true;
-    }
-
     public void notifySetDataChanged() {
         chooseAdapter.notifyDataSetChanged();
     }
 
     public Good getChoice() {
         return (Good) chooseAdapter.getItem(chooseAdapter.getSelectedPosition());
+    }
+
+    public boolean isChoiceSelected() {
+        return choiceSelected;
     }
 
     public interface ChoiceOnClickListener {

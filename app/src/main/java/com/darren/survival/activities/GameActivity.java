@@ -3,13 +3,10 @@ package com.darren.survival.activities;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,7 +24,6 @@ import com.darren.survival.fragment.MakeFragment;
 import com.darren.survival.fragment.MotionFragment;
 import com.darren.survival.fragment.MotionProgressBarFragment;
 import com.darren.survival.fragment.SceneFragment;
-import com.darren.survival.widget.MotionProgressBar;
 
 import java.util.List;
 
@@ -51,12 +47,6 @@ public class GameActivity extends AppCompatActivity implements BackpackFragment.
     private Fragment topFragment;
     private Fragment leftFragment;
     private Fragment rightFragment;
-
-    private MotionProgressBar motionProgressBar;
-
-    private IntentFilter intentFilter;
-    private LocalBroadcastManager localBroadcastManager;
-    private LocalBroadcastReceiver localBroadcastReceiver;
 
     private boolean isMotionProgressBarShowing;
 
@@ -92,11 +82,10 @@ public class GameActivity extends AppCompatActivity implements BackpackFragment.
         motionFragment = new MotionFragment();
         makeFragment = new MakeFragment();
         sceneFragment = new SceneFragment();
-
         motionProgressBarFragment = new MotionProgressBarFragment();
-//        motionProgressBarFragment.show(fm, "");
 
         transaction = fm.beginTransaction();//开启事物
+
 
 
         //主界面默认布局
@@ -118,14 +107,6 @@ public class GameActivity extends AppCompatActivity implements BackpackFragment.
         transaction.hide(motionProgressBarFragment);
 
         transaction.commit();
-
-        localBroadcastManager = LocalBroadcastManager.getInstance(this);
-        intentFilter = new IntentFilter();
-        intentFilter.addAction("com.darren.survival.REFRESH_ELEMENTS");
-        localBroadcastReceiver = new LocalBroadcastReceiver();
-        localBroadcastManager.registerReceiver(localBroadcastReceiver, intentFilter);
-
-        motionProgressBar = (MotionProgressBar) findViewById(R.id.motionProgressBar);
     }
 
     /**
@@ -154,6 +135,7 @@ public class GameActivity extends AppCompatActivity implements BackpackFragment.
      */
     @Override
     public void MotionFOnClick(View v) {
+        if(isMotionProgressBarShowing) return;
         int id = v.getId();
         switch (id) {
             case R.id.btnHunt:
@@ -164,7 +146,7 @@ public class GameActivity extends AppCompatActivity implements BackpackFragment.
                 break;
             case R.id.btnFire:
                 if (Motion.firer.getFireTimeLeft() <= 0) {
-                    chooseFragment.setData(ChooseFragment.CHOICE_TYPE_KINDLING_AND_INFLAMMABLE, Motion.firer.getKINDLING(), Motion.firer.getINFLAMMABLE());
+                    chooseFragment.setData(ChooseFragment.CHOICE_TYPE_KINDLING_AND_INFLAMMABLE, Motion.firer.getKINDLING(), Motion.firer.getINFLAMMABLES());
                     if (rightFragment != chooseFragment) replaceRightFragment(chooseFragment);
                 } else {
                     chooseFragment.setData(ChooseFragment.CHOICE_TYPE_FIREABLES, Motion.firer.getFIREABLES());
@@ -213,7 +195,6 @@ public class GameActivity extends AppCompatActivity implements BackpackFragment.
     }
 
     public void showProgress(Motion motion) {
-        if(isMotionProgressBarShowing) return;
         isMotionProgressBarShowing = true;
         transaction = fm.beginTransaction();
         transaction.show(motionProgressBarFragment);
@@ -251,6 +232,7 @@ public class GameActivity extends AppCompatActivity implements BackpackFragment.
         sceneFragment.notifyDataSetChanged();
         motionFragment.notifySetDataChanged();
         chooseFragment.notifySetDataChanged();
+        bpFragment.notifySetDataChanged();
     }
 
     /**
@@ -319,20 +301,5 @@ public class GameActivity extends AppCompatActivity implements BackpackFragment.
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        localBroadcastManager.unregisterReceiver(localBroadcastReceiver);
-    }
-
-
-    private class LocalBroadcastReceiver extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            switch (action) {
-                case "com.darren.survival.REFRESH_ELEMENTS":
-                    notifyDataSetChanged();
-                    break;
-            }
-        }
     }
 }

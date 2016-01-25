@@ -11,7 +11,7 @@ import com.darren.survival.elements.motion.good.Makable;
 public class Firewood extends Good implements Fireable, Makable, Getable {
     public static final double WEIGHT = 0.5;
     public static final int FIRE_TIME = 60;
-    public static int COUNT = 0;
+    private int count = 0;
     public static final String ID = "FR2";
     private static Firewood firewood = new Firewood();
 
@@ -33,13 +33,13 @@ public class Firewood extends Good implements Fireable, Makable, Getable {
     }
 
     @Override
-    public int getCOUNT() {
-        return COUNT;
+    public int getCount() {
+        return count;
     }
 
     @Override
-    public void setCOUNT(int COUNT) {
-        this.COUNT += COUNT;
+    public void setCount(int count) {
+        this.count = count;
     }
 
     @Override

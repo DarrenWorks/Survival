@@ -21,7 +21,7 @@ public class Firer extends Motion {
     private static int FIRE_TIME_LEFT;
 
     private List<Good> KINDLING = new ArrayList<>();//火种
-    private List<Good> INFLAMMABLE = new ArrayList<>();//易燃物
+    private List<Good> INFLAMMABLES = new ArrayList<>();//易燃物
 
     private List<Good> FIREABLES = new ArrayList<>();//可燃物，添加燃料时使用
 
@@ -33,14 +33,6 @@ public class Firer extends Motion {
 
     private Firer() {
         FIRE_TIME_LEFT = 0;
-
-        KINDLING.add(Good.lighter);
-        KINDLING.add(Good.kindling);
-        INFLAMMABLE.add(Good.sawdust);
-        INFLAMMABLE.add(Good.hay);
-
-        FIREABLES.add(Good.branch);
-        FIREABLES.add(Good.firewood);
     }
 
     @Override
@@ -49,15 +41,15 @@ public class Firer extends Motion {
     }
 
     public boolean fire(Good fireable) {
-        fireable.setCOUNT(-1);
+        fireable.addCount(-1);
         setFireTimeLeft(((Fireable)fireable).getFireTime());
         return true;
     }
 
     public boolean startFire(Good kindling, Good inflammable) {
         act();
-        kindling.setCOUNT(-1);
-        inflammable.setCOUNT(-1);
+        kindling.setCount(-1);
+        inflammable.addCount(-1);
         setFireTimeLeft(((Fireable)kindling).getFireTime());
         return true;
     }
@@ -96,18 +88,24 @@ public class Firer extends Motion {
     }
 
     public List<Good> getKINDLING() {
+        KINDLING.clear();
+        if(Good.lighter.getCount() > 0) KINDLING.add(Good.lighter);
+        if(Good.kindling.getCount() > 0) KINDLING.add(Good.kindling);
         return KINDLING;
     }
 
-    public List<Good> getINFLAMMABLE() {
-        return INFLAMMABLE;
+    public List<Good> getINFLAMMABLES() {
+        INFLAMMABLES.clear();
+        if(Good.sawdust.getCount() > 0) INFLAMMABLES.add(Good.sawdust);
+        if(Good.hay.getCount() > 0) INFLAMMABLES.add(Good.hay);
+        return INFLAMMABLES;
     }
 
     public List<Good> getFIREABLES() {
-//        FIREABLES.clear();
-//        for(Good good : survivor.getBackpack()) {
-//            if(good instanceof Fireable) FIREABLES.add(good);
-//        }
+        FIREABLES.clear();
+        for(Good good : Motion.packer.getBackpack()) {
+            if(good instanceof Fireable) FIREABLES.add(good);
+        }
         return FIREABLES;
     }
 }

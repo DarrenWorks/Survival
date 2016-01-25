@@ -62,7 +62,7 @@ import java.util.Map;
  */
 public abstract class Good {
     public static final double WEIGHT = 0;//物品所占质量
-    public static int COUNT = 0;//拥有该物品的数量，初始为0
+    public int count = 0;//拥有该物品的数量，初始为0
     //物品列表
     public static final Good antelope = Antelope.getInstance();
     public static final Good axe = Axe.getInstance();
@@ -186,9 +186,13 @@ public abstract class Good {
     }
 
     abstract  public double getWEIGHT();
-    abstract public int getCOUNT();
-    abstract public void setCOUNT(int COUNT);
+    abstract public int getCount();
+    abstract public void setCount(int COUNT);
     abstract public String getID();
+
+    public void addCount(int count) {
+        setCount(getCount() + count);
+    }
 
     /**
      * 获取此类用来显示的名字

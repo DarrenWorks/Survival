@@ -9,7 +9,7 @@ import com.darren.survival.elements.motion.good.Makable;
  */
 public class FishMeat extends Good implements Makable, Eatable {
     public static final double WEIGHT = 0.2;
-    public static int COUNT = 0;
+    private int count = 0;
     public static final String ID = "ET6";
     private static FishMeat fishMeat = new FishMeat();
 
@@ -26,13 +26,13 @@ public class FishMeat extends Good implements Makable, Eatable {
     }
 
     @Override
-    public int getCOUNT() {
-        return COUNT;
+    public int getCount() {
+        return count;
     }
 
     @Override
-    public void setCOUNT(int COUNT) {
-        FishMeat.COUNT += COUNT;
+    public void setCount(int count) {
+        this.count = count;
     }
 
     @Override

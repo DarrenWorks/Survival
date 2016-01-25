@@ -8,7 +8,7 @@ import com.darren.survival.elements.motion.good.Makable;
  */
 public class Axe extends Good implements Makable {
     public static final double WEIGHT = 1;
-    public static int COUNT = 0;
+    private int count = 0;
     public static final String ID = "WK15";
     private static Axe axe = new Axe();
 
@@ -25,13 +25,13 @@ public class Axe extends Good implements Makable {
     }
 
     @Override
-    public int getCOUNT() {
-        return COUNT;
+    public int getCount() {
+        return count;
     }
 
     @Override
-    public void setCOUNT(int COUNT) {
-        Axe.COUNT += COUNT;
+    public void setCount(int count) {
+        this.count = count;
     }
 
     @Override

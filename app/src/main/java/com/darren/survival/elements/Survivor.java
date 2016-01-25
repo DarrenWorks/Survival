@@ -1,10 +1,8 @@
 package com.darren.survival.elements;
 
 import com.darren.survival.elements.model.Good;
+import com.darren.survival.elements.model.Motion;
 import com.darren.survival.elements.model.Scene;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Darren on 2015/12/7 0007.
@@ -21,6 +19,16 @@ public class Survivor {
         //初始化场景，生成第一个场景
         scene = Scene.getFirstScene();
         nextScene = scene.getNext();
+    }
+
+    public void initData() {
+
+        for(Good good : Motion.packer.getBackpack()) {//将所有数量非0的物品置0
+            good.setCount(-good.getCount());
+        }
+        Motion.packer.getBackpack().clear();
+
+
     }
 
     public static Survivor getInstance() {

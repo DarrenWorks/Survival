@@ -39,7 +39,7 @@ public class Tourer extends Motion {
         List<Good> goods = RandomUtil.randomGoods(getSurvivor().getScene(), this);
         for(Iterator<Good> it = goods.iterator(); it.hasNext();) {
             Good good = it.next();
-            good.setCOUNT(+ 1);
+            good.addCount(+1);
             if(!backpack.contains(good)) backpack.add(good);
         }
     }

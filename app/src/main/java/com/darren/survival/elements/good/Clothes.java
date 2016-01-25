@@ -7,7 +7,7 @@ import com.darren.survival.elements.model.Good;
  */
 public class Clothes extends Good {
     public static final double WEIGHT = 2;
-    public static int COUNT = 0;
+    private int count = 0;
     public static final String ID = "WK20";
     private static Clothes clothes = new Clothes();
 
@@ -24,13 +24,13 @@ public class Clothes extends Good {
     }
 
     @Override
-    public int getCOUNT() {
-        return COUNT;
+    public int getCount() {
+        return count;
     }
 
     @Override
-    public void setCOUNT(int COUNT) {
-        Clothes.COUNT += COUNT;
+    public void setCount(int count) {
+        this.count = count;
     }
 
     @Override

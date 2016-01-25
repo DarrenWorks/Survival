@@ -8,7 +8,7 @@ import com.darren.survival.elements.motion.good.Eatable;
  */
 public class Water extends Good implements Eatable {
     public static final double WEIGHT = 0.5;
-    public static int COUNT = 0;
+    private int count = 0;
     public static final int CALORIE = 0;
     public static final int WATER = 20;
     public static final int TEMPERATURE = 0;
@@ -28,13 +28,13 @@ public class Water extends Good implements Eatable {
     }
 
     @Override
-    public int getCOUNT() {
-        return COUNT;
+    public int getCount() {
+        return count;
     }
 
     @Override
-    public void setCOUNT(int COUNT) {
-        Water.COUNT += COUNT;
+    public void setCount(int count) {
+        this.count = count;
     }
 
     @Override

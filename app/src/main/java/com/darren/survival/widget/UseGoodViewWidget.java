@@ -29,7 +29,7 @@ public class UseGoodViewWidget extends LinearLayout {
 
     public void setMassage(Good good) {
         goodName.setText(good.getName());
-        countForUse.setText(String.format("(%d)", good.getCOUNT()));
+        countForUse.setText(String.format("(%d)", good.getCount()));
     }
 
     public void setTextBold(boolean isBold) {

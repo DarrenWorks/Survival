@@ -56,7 +56,7 @@ public class BackpackAdapter extends BaseAdapter {
         Good good = backpack.get(position);
         String[] strNames = good.getClass().getName().split("\\.");
         String strName = strNames[strNames.length - 1];
-        String strCount = good.getCOUNT() + "";
+        String strCount = good.getCount() + "";
         goodName.setText(strName);
         goodCount.setText(strCount);
 

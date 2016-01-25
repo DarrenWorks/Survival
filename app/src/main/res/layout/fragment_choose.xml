@@ -30,7 +30,8 @@
             android:text="hint"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="#ffffff"
-            android:layout_centerVertical="true"/>
+            android:layout_centerVertical="true"
+            />
 
         <Button
             android:id="@+id/back"
@@ -48,7 +49,8 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="20dp"
             android:layout_toLeftOf="@+id/back"
-            android:text="sure"/>
+            android:text="sure"
+            android:visibility="gone"/>
     </RelativeLayout>
 
 </LinearLayout>

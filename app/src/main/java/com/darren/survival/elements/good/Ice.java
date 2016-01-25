@@ -9,7 +9,7 @@ import com.darren.survival.elements.motion.good.Makable;
  */
 public class Ice extends Good implements Eatable, Makable {
     public static final double WEIGHT = 0.5;
-    public static int COUNT = 0;
+    private int count = 0;
     public static final int CALORIE = 0;
     public static final int WATER = 10;
     public static final int TEMPERATURE = -30;
@@ -29,13 +29,13 @@ public class Ice extends Good implements Eatable, Makable {
     }
 
     @Override
-    public int getCOUNT() {
-        return COUNT;
+    public int getCount() {
+        return count;
     }
 
     @Override
-    public void setCOUNT(int COUNT) {
-        Ice.COUNT += COUNT;
+    public void setCount(int count) {
+        this.count = count;
     }
 
     @Override

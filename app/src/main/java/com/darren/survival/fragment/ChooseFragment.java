@@ -2,9 +2,7 @@ package com.darren.survival.fragment;
 
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +20,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class ChooseFragment extends Fragment {
+public class ChooseFragment extends Fragment implements ChooseViewWidget.ChoiceOnClickListener{
     public static final int CHOICE_TYPE_KINDLING_AND_INFLAMMABLE = 0;
     public static final int CHOICE_TYPE_FIREABLES = 1;
 
@@ -37,8 +35,6 @@ public class ChooseFragment extends Fragment {
     private List<ChooseViewWidget> chooseWidgetList = new ArrayList<>();
 
     private LinearLayout chooseWidgets;
-
-    private LocalBroadcastManager localBroadcastManager;
 
     public ChooseFragment() {
     }
@@ -66,14 +62,10 @@ public class ChooseFragment extends Fragment {
                     case R.id.back :
                         break;
                 }
-
-                Intent intent = new Intent("com.darren.survival.REFRESH_ELEMENTS");
-                localBroadcastManager.sendBroadcast(intent);
             }
         };
         sure.setOnClickListener(onClickListener);
         back.setOnClickListener(onClickListener);
-        localBroadcastManager = LocalBroadcastManager.getInstance(getActivity());
         return view;
     }
 
@@ -126,6 +118,17 @@ public class ChooseFragment extends Fragment {
 
     public int getChoiceType() {
         return choiceType;
+    }
+
+    @Override
+    public void onClick(Good choice) {
+        for(ChooseViewWidget chooseViewWidget : chooseWidgetList) {
+            if(!chooseViewWidget.isChoiceSelected()) {
+                sure.setVisibility(View.INVISIBLE);
+                return;
+            }
+        }
+        sure.setVisibility(View.VISIBLE);
     }
 
     public interface ChooseFOnClickListener {

@@ -45,7 +45,6 @@ public class BackpackFragment extends Fragment implements View.OnClickListener, 
         btnBack = (Button) view.findViewById(R.id.btnBack);
         btnEat = (Button) view.findViewById(R.id.btnEat);
         btnBack.setOnClickListener(this);
-        chooseViewWidget.setListening();
     }
 
     public void notifySetDataChanged() {
