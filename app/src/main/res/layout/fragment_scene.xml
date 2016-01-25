@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context="com.darren.survival.fragment.SceneFragment"
+              android:orientation="horizontal"
+    >
+
+    <com.darren.survival.widget.ElementViewWidget
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scene"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center"/>
+
+    <com.darren.survival.widget.ElementViewWidget
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/nextScene"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal"/>
+
+    <com.darren.survival.widget.ElementViewWidget
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/distance"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal"/>
+</LinearLayout>

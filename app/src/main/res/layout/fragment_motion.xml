@@ -1,0 +1,94 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="com.darren.survival.fragment.MotionFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnHunt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="Hunt"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="Camp"
+            android:id="@+id/btnCamp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="Rest"
+            android:id="@+id/btnRest"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btnTour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textAllCaps="false"
+            android:layout_weight="1"
+            android:text="Tour"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnFire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="Fire"/>
+
+        <Button
+            android:id="@+id/btnHurry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="Hurry"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Make"
+            android:id="@+id/btnMake"
+            android:layout_gravity="center_vertical"
+            android:textAllCaps="false"
+            android:layout_weight="1"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:textAllCaps="false"
+            android:layout_height="wrap_content"
+            android:text="Pack"
+            android:id="@+id/btnPack"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+</LinearLayout>

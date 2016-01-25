@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+              android:orientation="horizontal"
+             tools:context="com.darren.survival.fragment.MakeFragment">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/targetList"
+        android:layout_weight="2"
+        android:listSelector="@color/DKGRAY"
+        android:layout_gravity="left"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/materialList"
+        android:layout_gravity="right"
+        android:layout_weight="1"/>
+
+</LinearLayout>
