@@ -67,4 +67,8 @@ public class CraftingManager {
     public Map<String, Recipe> getRecipeMap() {
         return recipeMap;
     }
+
+    public boolean isMakable(Good target) {
+        return getRecipe(target).isEnough();
+    }
 }

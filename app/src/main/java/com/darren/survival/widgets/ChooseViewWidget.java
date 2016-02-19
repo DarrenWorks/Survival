@@ -1,4 +1,4 @@
-package com.darren.survival.widget;
+package com.darren.survival.widgets;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.darren.survival.Adapter.ChooseAdapter;
+import com.darren.survival.adapters.ChooseAdapter;
 import com.darren.survival.R;
 import com.darren.survival.elements.model.Good;
 

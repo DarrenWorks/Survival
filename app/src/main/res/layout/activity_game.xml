@@ -43,7 +43,7 @@
                 android:id="@+id/rightLayout"
                 android:visibility="visible">
 
-                <com.darren.survival.widget.MotionProgressBar
+                <com.darren.survival.widgets.MotionProgressBar
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/motionProgressBar"

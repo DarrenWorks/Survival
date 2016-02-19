@@ -1,4 +1,4 @@
-package com.darren.survival.Adapter;
+package com.darren.survival.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.darren.survival.R;
 import com.darren.survival.elements.model.Good;
+import com.darren.survival.utls.CraftingManager;
 
 import java.util.List;
 
@@ -21,6 +22,8 @@ public class TargetAdapter extends BaseAdapter {
     private List<Good> targets;
 
     private int selectedPosition = -1;//选中项的position，未选中时默认为-1
+
+    private CraftingManager craftingManager = CraftingManager.getInstance();
 
     public TargetAdapter(Context context, List<Good> targets) {
         inflater = LayoutInflater.from(context);
@@ -46,6 +49,10 @@ public class TargetAdapter extends BaseAdapter {
         this.selectedPosition = selectedPosition;
     }
 
+    public boolean isMakable(int position) {
+        return craftingManager.isMakable(targets.get(position));
+    }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         TextView txtTarget;
@@ -54,6 +61,13 @@ public class TargetAdapter extends BaseAdapter {
         }
         txtTarget = (TextView)convertView.findViewById(R.id.txtTarget);
         txtTarget.setText(((Good)getItem(position)).getName());
+
+        //设置是否可合成效果
+        if(!isMakable(position)) {
+            txtTarget.setTextColor(Color.parseColor("#99FFFFFF"));
+        } else {
+            txtTarget.setTextColor(Color.WHITE);
+        }
 
         //设置选中效果
         if(selectedPosition == position) {

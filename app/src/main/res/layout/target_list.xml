@@ -10,5 +10,6 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="targetName"
         android:id="@+id/txtTarget"
-        android:focusable="false"/>
+        android:focusable="false"
+        android:textColor="#ffffff"/>
 </LinearLayout>

@@ -1,23 +1,73 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
               android:orientation="horizontal"
-             tools:context="com.darren.survival.fragment.MakeFragment">
+              tools:context="com.darren.survival.fragments.MakeFragment"
+              android:background="#1e1a1a">
 
-    <ListView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/targetList"
-        android:layout_weight="2"
-        android:listSelector="@color/DKGRAY"
-        android:layout_gravity="left"/>
+        android:layout_gravity="left"
+        android:layout_weight="2">
 
-    <ListView
+        <ListView
+            android:id="@+id/targetList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:listSelector="@android:color/transparent"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:id="@+id/btnBack"
+            android:layout_gravity="right|bottom"/>
+
+    </FrameLayout>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/materialList"
         android:layout_gravity="right"
-        android:layout_weight="1"/>
+        android:layout_weight="1">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Make"
+            android:id="@+id/btnMake"
+            android:layout_gravity="right|bottom"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="name"
+                android:id="@+id/txtName"
+                android:textColor="#ffffff"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Materials:"
+                android:id="@+id/textView2"
+                android:textColor="#ffffff"/>
+
+            <ListView
+                android:id="@+id/materialList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
+    </FrameLayout>
 
 </LinearLayout>

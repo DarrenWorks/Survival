@@ -3,10 +3,8 @@ package com.darren.survival.elements.motion.people;
 
 import com.darren.survival.elements.model.Good;
 import com.darren.survival.elements.model.Motion;
-import com.darren.survival.utls.RandomUtil;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -35,13 +33,7 @@ public class Tourer extends Motion {
     public void act() {
        super.act();
         Motion.camper.setCAMPED(false);
-        if(backpack.isEmpty()) backpack = Motion.packer.getBackpack();
-        List<Good> goods = RandomUtil.randomGoods(getSurvivor().getScene(), this);
-        for(Iterator<Good> it = goods.iterator(); it.hasNext();) {
-            Good good = it.next();
-            good.addCount(+1);
-            if(!backpack.contains(good)) backpack.add(good);
-        }
+       Motion.packer.getGoods(this, getSurvivor().getScene());
     }
 
     @Override

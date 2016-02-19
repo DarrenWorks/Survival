@@ -1,4 +1,4 @@
-package com.darren.survival.Adapter;
+package com.darren.survival.adapters;
 
 import android.content.Context;
 import android.view.View;
@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.darren.survival.elements.model.Good;
-import com.darren.survival.widget.UseGoodViewWidget;
+import com.darren.survival.widgets.UseGoodViewWidget;
 
 import java.util.List;
 

@@ -3,7 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="horizontal"
-              tools:context="com.darren.survival.fragment.BackpackFragment"
+              tools:context="com.darren.survival.fragments.BackpackFragment"
               android:background="#1e1a1a">
 
     <RelativeLayout
@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1">
 
-        <com.darren.survival.widget.ChooseViewWidget
+        <com.darren.survival.widgets.ChooseViewWidget
             android:id="@+id/chooseWidget"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

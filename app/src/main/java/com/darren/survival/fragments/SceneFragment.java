@@ -1,4 +1,4 @@
-package com.darren.survival.fragment;
+package com.darren.survival.fragments;
 
 
 import android.app.Fragment;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.darren.survival.R;
 import com.darren.survival.elements.Survivor;
-import com.darren.survival.widget.ElementViewWidget;
+import com.darren.survival.widgets.ElementViewWidget;
 
 /**
  * A simple {@link Fragment} subclass.

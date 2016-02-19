@@ -1,4 +1,4 @@
-package com.darren.survival.fragment;
+package com.darren.survival.fragments;
 
 
 import android.app.Fragment;
@@ -69,6 +69,8 @@ public class MotionFragment extends Fragment {
     public void notifySetDataChanged() {
         if(Motion.firer.getFireTimeLeft() >0) btnFire.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
         else  btnFire.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+        if(Motion.camper.isCAMPED()) btnCamp.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        else  btnCamp.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
     }
 
     public interface MotionFOnClickListener {

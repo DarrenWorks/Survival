@@ -1,4 +1,4 @@
-package com.darren.survival.Adapter;
+package com.darren.survival.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

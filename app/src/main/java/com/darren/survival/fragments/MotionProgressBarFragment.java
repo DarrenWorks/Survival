@@ -1,4 +1,4 @@
-package com.darren.survival.fragment;
+package com.darren.survival.fragments;
 
 
 import android.app.DialogFragment;
@@ -11,8 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.darren.survival.R;
+import com.darren.survival.elements.model.Good;
 import com.darren.survival.elements.model.Motion;
 
 import java.lang.ref.WeakReference;
@@ -69,9 +71,15 @@ public class MotionProgressBarFragment extends DialogFragment {
         switch (getMotion().getName()) {
             case MotionProgressBarFragment.MOTION_NAME_HUNTER:
                 Motion.hunter.act();
+                for(Good newGood : Motion.packer.getNewGoods().keySet()) {
+                Toast.makeText(getActivity(), String.format("You've got a new good : %s(%d)", newGood.getName(), Motion.packer.getNewGoods().get(newGood)), Toast.LENGTH_SHORT).show();
+                }
                 break;
             case MotionProgressBarFragment.MOTION_NAME_TOUR:
                 Motion.tourer.act();
+                for(Good newGood : Motion.packer.getNewGoods().keySet()) {
+                    Toast.makeText(getActivity(), String.format("You've got a new good : %s(%d)", newGood.getName(), Motion.packer.getNewGoods().get(newGood)), Toast.LENGTH_SHORT).show();
+                }
                 break;
             case MotionProgressBarFragment.MOTION_NAME_HURRY:
                 Motion.hurrier.act();

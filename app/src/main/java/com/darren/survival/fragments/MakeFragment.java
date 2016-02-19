@@ -1,5 +1,5 @@
 
-package com.darren.survival.fragment;
+package com.darren.survival.fragments;
 
 
 import android.app.Fragment;
@@ -9,10 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
-import com.darren.survival.Adapter.MaterialAdapter;
-import com.darren.survival.Adapter.TargetAdapter;
+import com.darren.survival.adapters.MaterialAdapter;
+import com.darren.survival.adapters.TargetAdapter;
 import com.darren.survival.R;
 import com.darren.survival.elements.model.Good;
 import com.darren.survival.utls.CraftingManager;
@@ -27,6 +29,10 @@ import java.util.Map;
  */
 public class MakeFragment extends Fragment {
     private View view;
+
+    private Button btnBack;
+    private Button btnMake;
+    private TextView txtName;
 
     private ListView targetList;
     private ListView materialList;
@@ -51,12 +57,31 @@ public class MakeFragment extends Fragment {
     }
 
     private void init() {
-        targetList = (ListView)view.findViewById(R.id.targetList);
-        materialList = (ListView)view.findViewById(R.id.materialList);
+        txtName = (TextView)view.findViewById(R.id.txtName);
+        txtName.setText("");
+        btnBack = (Button) view.findViewById(R.id.btnBack);
+        btnMake = (Button) view.findViewById(R.id.btnMake);
+        View.OnClickListener onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int id = v.getId();
+                switch (id) {
+                    case R.id.btnBack:
+                        break;
+                    case R.id.btnMake:
+                        break;
+                }
+            }
+        };
+        btnBack.setOnClickListener(onClickListener);
+        btnMake.setOnClickListener(onClickListener);
+
+        targetList = (ListView) view.findViewById(R.id.targetList);
+        materialList = (ListView) view.findViewById(R.id.materialList);
 
         targets = new ArrayList<>();
         final Map<String, Recipe> recipeMap = craftingManager.getRecipeMap();
-        for(String targetID : recipeMap.keySet()) {
+        for (String targetID : recipeMap.keySet()) {
             targets.add(Good.findGoodById(targetID));
         }
 
@@ -66,9 +91,14 @@ public class MakeFragment extends Fragment {
         targetList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                btnMake.setVisibility(View.VISIBLE);
                 targetListAdapter.setSelectedPosition(position);
                 targetListAdapter.notifyDataSetChanged();
-                materialListAdapter.setData(recipeMap.get(((Good)targetListAdapter.getItem(position)).getID()));
+                materialListAdapter.setData(recipeMap.get(((Good) targetListAdapter.getItem(position)).getID()));
+                txtName.setText(targets.get(position).getName());
+                if (!targetListAdapter.isMakable(position)) {
+                    btnMake.setVisibility(View.GONE);
+                }
             }
         });
 
@@ -86,7 +116,11 @@ public class MakeFragment extends Fragment {
 
         materialListAdapter = new MaterialAdapter(getActivity(), recipeMap.get(targets.get(0).getID()));
         materialList.setAdapter(materialListAdapter);
+        txtName.setText(targets.get(0).getName());
+    }
 
+    public interface MakeFOnClickListener {
+        void MakeFOnClick(View v);
     }
 
 }

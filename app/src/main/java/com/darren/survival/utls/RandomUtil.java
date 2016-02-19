@@ -90,7 +90,7 @@ public class RandomUtil {
      */
     public static List<Good> randomGoods(Scene scene, Motion motion) {
         Map<Good[], Integer[]> goodsMap = scene.getGoods(motion); //根据场景、行为获得物品掉落list
-        List<Good> goods = new ArrayList<>();//
+        List<Good> goods = new ArrayList<>();
         for(Good[] goodsArray : goodsMap.keySet()) {//遍历掉落list的每种物品数组
             Integer[] goodsInfo = goodsMap.get(goodsArray);//得到该物品数组的详细信息（掉落概率及掉落次数）
             for(int i=0; i<goodsInfo[1]; i++) {//掉落物品，循环次数为掉落次数

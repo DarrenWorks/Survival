@@ -1,6 +1,7 @@
 package com.darren.survival.utls;
 
 import com.darren.survival.elements.model.Good;
+import com.darren.survival.elements.model.Motion;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,5 +39,13 @@ public class Recipe {
 
     public boolean isNeedFire() {
         return needFire;
+    }
+
+    public boolean isEnough() {
+        for(Material material : materials) {
+            if(!material.isEnough()) return false;
+        }
+        if(needFire && !(Motion.firer.getFireTimeLeft() > 0)) return false;
+        return true;
     }
 }

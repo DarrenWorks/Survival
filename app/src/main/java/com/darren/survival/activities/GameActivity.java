@@ -17,19 +17,19 @@ import com.darren.survival.R;
 import com.darren.survival.elements.Survivor;
 import com.darren.survival.elements.model.Good;
 import com.darren.survival.elements.model.Motion;
-import com.darren.survival.fragment.BackpackFragment;
-import com.darren.survival.fragment.ChooseFragment;
-import com.darren.survival.fragment.ElementFragment;
-import com.darren.survival.fragment.MakeFragment;
-import com.darren.survival.fragment.MotionFragment;
-import com.darren.survival.fragment.MotionProgressBarFragment;
-import com.darren.survival.fragment.SceneFragment;
+import com.darren.survival.fragments.BackpackFragment;
+import com.darren.survival.fragments.ChooseFragment;
+import com.darren.survival.fragments.ElementFragment;
+import com.darren.survival.fragments.MakeFragment;
+import com.darren.survival.fragments.MotionFragment;
+import com.darren.survival.fragments.MotionProgressBarFragment;
+import com.darren.survival.fragments.SceneFragment;
 
 import java.util.List;
 
 
 public class GameActivity extends AppCompatActivity implements BackpackFragment.BackpackFOnClickListener, MotionFragment.MotionFOnClickListener,
-        ChooseFragment.ChooseFOnClickListener, MotionProgressBarFragment.MotionProgressBarFListener {
+        ChooseFragment.ChooseFOnClickListener, MotionProgressBarFragment.MotionProgressBarFListener, MakeFragment.MakeFOnClickListener {
     private Survivor survivor = null;
 
     private FragmentManager fm;
@@ -194,6 +194,19 @@ public class GameActivity extends AppCompatActivity implements BackpackFragment.
         }
     }
 
+    /**
+     * MakeFragment点击事件
+     */
+    @Override
+    public void MakeFOnClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.btnBack:
+                onBackPressed();
+                break;
+        }
+    }
+
     public void showProgress(Motion motion) {
         isMotionProgressBarShowing = true;
         transaction = fm.beginTransaction();
@@ -302,4 +315,5 @@ public class GameActivity extends AppCompatActivity implements BackpackFragment.
     protected void onDestroy() {
         super.onDestroy();
     }
+
 }

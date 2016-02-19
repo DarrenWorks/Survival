@@ -1,4 +1,4 @@
-package com.darren.survival.widget;
+package com.darren.survival.widgets;
 
 import android.content.Context;
 import android.os.Handler;

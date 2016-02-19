@@ -26,4 +26,11 @@ public class Material {
     public int getAmount() {
         return amount;
     }
+
+    public boolean isEnough() {
+        for(Good good : material) {
+            if (!(good.getCount() < amount)) return true;
+        }
+        return false;
+    }
 }

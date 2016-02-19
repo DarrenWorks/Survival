@@ -1,4 +1,4 @@
-package com.darren.survival.Adapter;
+package com.darren.survival.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -47,22 +47,22 @@ public class MaterialAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        TextView txtNumber;
         TextView txtMaterial;
-        TextView txtAmount;
         if(convertView == null) {
             convertView = inflater.inflate(R.layout.material_list, null);
         }
+        txtNumber = (TextView)convertView.findViewById(R.id.txtNumber);
         txtMaterial = (TextView)convertView.findViewById(R.id.txtMaterial);
-        txtAmount = (TextView) convertView.findViewById(R.id.txtAmount);
 
+        txtNumber.setText(String.format("%d. ", position + 1));
         String strMaterial = "";
         for(Good material : materials.get(position).getMaterial()) {
-            strMaterial += material.getName() + "\n";
+            strMaterial += String.format("%s(%d)or", material.getName(), materials.get(position).getAmount());
         }
         strMaterial = strMaterial.substring(0, strMaterial.length() - 1);
 
         txtMaterial.setText(strMaterial);
-        txtAmount.setText(String.valueOf(materials.get(position).getAmount()));
         return convertView;
     }
 }

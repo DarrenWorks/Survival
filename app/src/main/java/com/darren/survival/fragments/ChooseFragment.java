@@ -1,4 +1,4 @@
-package com.darren.survival.fragment;
+package com.darren.survival.fragments;
 
 
 import android.app.Fragment;
@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.darren.survival.R;
 import com.darren.survival.elements.model.Good;
 import com.darren.survival.elements.model.Motion;
-import com.darren.survival.widget.ChooseViewWidget;
+import com.darren.survival.widgets.ChooseViewWidget;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
